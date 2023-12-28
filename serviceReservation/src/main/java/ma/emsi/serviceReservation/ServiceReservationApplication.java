@@ -24,7 +24,7 @@ public class ServiceReservationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceReservationApplication.class, args);
 	}
-	/*
+	
 	@Bean
 	CommandLineRunner tets(ReservationRepository reservationRepository, UserService userService) {
 		return args -> {
@@ -35,7 +35,7 @@ public class ServiceReservationApplication {
 				
 			}
 		};
-	}*/
+	}
 
 	@FeignClient(name = "SERVICE-USER")
 	public interface UserService {
@@ -48,5 +48,4 @@ public class ServiceReservationApplication {
 		@GetMapping(path = "/api/chambre/find/{id}")
 		public Chambre findById(@PathVariable String id);
 	}
-
 }

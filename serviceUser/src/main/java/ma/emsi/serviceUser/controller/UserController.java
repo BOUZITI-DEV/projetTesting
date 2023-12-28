@@ -29,7 +29,7 @@ public class UserController {
         userRepository.save(user);
     }
 
-    @PatchMapping("patch")
+    @PutMapping("patch")
     public void patch(@RequestBody User user) {
         userRepository.save(user);
     }

@@ -28,7 +28,7 @@ public class ReservationController {
         reservationRepository.save(reservation);
     }
 
-    @PatchMapping("patch")
+    @PutMapping("patch")
     public void patch(@RequestBody Reservation reservation) {
         reservationRepository.save(reservation);
     }
