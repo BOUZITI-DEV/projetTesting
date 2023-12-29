@@ -26,7 +26,7 @@ public class ChambreController {
         chambreRepository.save(Chambre);
     }
 
-    @PutMapping("patch")
+    @PutMapping("put")
     public void patch(@RequestBody Chambre Chambre) {
         chambreRepository.save(Chambre);
     }

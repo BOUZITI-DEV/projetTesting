@@ -27,7 +27,7 @@ public class HotelController {
         hotelRepository.save(Hotel);
     }
 
-    @PutMapping("patch")
+    @PutMapping("put")
     public void patch(@RequestBody Hotel Hotel) {
         hotelRepository.save(Hotel);
     }

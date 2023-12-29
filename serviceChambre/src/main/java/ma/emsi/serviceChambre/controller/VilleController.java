@@ -27,7 +27,7 @@ public class VilleController {
         villeRepository.save(Ville);
     }
 
-    @PutMapping("patch")
+    @PutMapping("put")
     public void patch(@RequestBody Ville Ville) {
         villeRepository.save(Ville);
     }
