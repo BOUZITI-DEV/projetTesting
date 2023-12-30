@@ -1,6 +1,9 @@
 package ma.emsi.serviceReservation.controller;
 
+import ma.emsi.serviceReservation.ServiceReservationApplication.ChambreService;
+import ma.emsi.serviceReservation.ServiceReservationApplication.UserService;
 import ma.emsi.serviceReservation.model.Reservation;
+import ma.emsi.serviceReservation.model.User;
 import ma.emsi.serviceReservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +15,12 @@ import java.util.List;
 public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
+    
+    @Autowired
+    private UserService userService;
+    
+    @Autowired
+    private ChambreService chambreService;
 
     @GetMapping("find/{id}")
     public Reservation findById(@PathVariable(required = true)String id) {
@@ -20,7 +29,13 @@ public class ReservationController {
 
     @GetMapping("findAll")
     public List<Reservation> findAll() {
-        return reservationRepository.findAll();
+    	List<Reservation> reservations = reservationRepository.findAll();
+    	for(Reservation res : reservations) {
+    		res.setChambre(chambreService.findById(String.valueOf(res.getChambreId())));
+    		res.setUser(userService.findById(String.valueOf(res.getUserId())));
+    		System.out.println(res);
+    	}
+        return reservations;
     }
 
     @PostMapping("save")
@@ -28,7 +43,7 @@ public class ReservationController {
         reservationRepository.save(reservation);
     }
 
-    @PutMapping("patch")
+    @PutMapping("put")
     public void patch(@RequestBody Reservation reservation) {
         reservationRepository.save(reservation);
     }

@@ -1,5 +1,7 @@
 package ma.emsi.serviceReservation.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +15,7 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private Date dateReservation;
 	@Transient
 	@ManyToOne
 	private User user;
@@ -27,9 +30,10 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(int id, User user, int userId, Chambre chambre, int chambreId) {
+	public Reservation(int id, Date dateReservation, User user, int userId, Chambre chambre, int chambreId) {
 		super();
 		this.id = id;
+		this.dateReservation = dateReservation;
 		this.user = user;
 		this.userId = userId;
 		this.chambre = chambre;
@@ -76,10 +80,18 @@ public class Reservation {
 		this.chambreId = chambreId;
 	}
 
+	public Date getDateReservation() {
+		return dateReservation;
+	}
+
+	public void setDateReservation(Date dateReservation) {
+		this.dateReservation = dateReservation;
+	}
+
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", user=" + user + ", userId=" + userId + ", chambre=" + chambre
-				+ ", chambreId=" + chambreId + "]";
+		return "Reservation [id=" + id + ", dateReservation=" + dateReservation + ", user=" + user + ", userId="
+				+ userId + ", chambre=" + chambre + ", chambreId=" + chambreId + "]";
 	}
 
 }

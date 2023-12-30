@@ -24,18 +24,6 @@ public class ServiceReservationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceReservationApplication.class, args);
 	}
-	
-	@Bean
-	CommandLineRunner tets(ReservationRepository reservationRepository, UserService userService) {
-		return args -> {
-			for(Reservation r : reservationRepository.findAll()) {
-				System.out.println(r.getUserId());
-				User user = userService.findById(Integer.toString(r.getUserId()));
-				System.out.println(user);
-				
-			}
-		};
-	}
 
 	@FeignClient(name = "SERVICE-USER")
 	public interface UserService {
