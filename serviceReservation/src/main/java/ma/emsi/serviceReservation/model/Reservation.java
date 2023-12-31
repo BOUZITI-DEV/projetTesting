@@ -1,16 +1,10 @@
 package ma.emsi.serviceReservation.model;
 
-import java.sql.Date;
+import java.sql.Date;	
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +28,16 @@ public class Reservation {
 		super();
 		this.id = id;
 		this.dateReservation = dateReservation;
+		this.user = user;
+		this.userId = userId;
+		this.chambre = chambre;
+		this.chambreId = chambreId;
+	}
+	
+
+	public Reservation(int id, User user, int userId, Chambre chambre, int chambreId) {
+		super();
+		this.id = id;
 		this.user = user;
 		this.userId = userId;
 		this.chambre = chambre;
