@@ -1,6 +1,6 @@
 package ma.emsi.serviceChambre.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.*;	
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

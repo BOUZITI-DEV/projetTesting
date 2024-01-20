@@ -18,6 +18,15 @@ public class UserController {
     public User findById(@PathVariable(required = true) String id) {
         return userRepository.findById(Integer.parseInt(id));
     }
+    
+    @PostMapping("authentification")
+    public Boolean authentification(@RequestBody User user) {
+        for(User u : userRepository.findAll())
+        	if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(user.getPassword()))
+        		return true;
+        return false;
+    }
+    
 
     @GetMapping("findAll")
     public List<User> findAll() {
